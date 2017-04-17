@@ -86,8 +86,8 @@ class SecondTab extends Component {
     }
   }
 
-  _onChangeText(text) {
-   this.setState({ text: text });
+  onChangeText(inputText) {
+   this.setState({ text: inputText });
   }
 
   render() {
@@ -102,7 +102,7 @@ class SecondTab extends Component {
           <TextInput
             style={{height: 50}}
             placeholder="テキスト入力"
-            onChangeText={(word) => this.setState({word: word})}
+            onChangeText={(inputText) => this.setState({word: inputText})}
           />
           <Text style={{padding: 10, fontSize: 20}}>
             {this.state.word}
@@ -112,7 +112,7 @@ class SecondTab extends Component {
         <View style={{backgroundColor: '#D6F7AD'}}>
           <TextInput
             style={styles.textform}
-            onChangeText={this._onChangeText.bind(this)}
+            onChangeText={this.onChangeText.bind(this)}
           />
           <TouchableHighlight　onPress={this.addItem.bind(this)} >
             <Text style={styles.addButton}>
@@ -128,15 +128,15 @@ class SecondTab extends Component {
             renderRow = {(rowData) =>
                           <View style={{flexDirection: 'row'}}>
                             <CheckBox
-                                  style={{padding: 5, width:300}}
-                                  onClick={()=>this.onClick(rowData)}
-                                  isChecked={rowData.isChecked}
-                                  rightText={rowData.id +' : '+ rowData.value}
-                                  rightTextStyle={{color: this.renderColor(rowData)}}
-                                  />
-                                  <TouchableHighlight onPress={this.deleteItem.bind(this, rowData)}>
-                                    <Text style={styles.deleteButton}>×</Text>
-                                  </TouchableHighlight>
+                              style={{padding: 5, width:300}}
+                              onClick={()=>this.onClick(rowData)}
+                              isChecked={rowData.isChecked}
+                              rightText={rowData.id +' : '+ rowData.value}
+                              rightTextStyle={{color: this.renderColor(rowData)}}
+                            />
+                            <TouchableHighlight onPress={this.deleteItem.bind(this, rowData)}>
+                              <Text style={styles.deleteButton}>×</Text>
+                            </TouchableHighlight>
                           </View>
                         }
            />
